@@ -7,7 +7,7 @@ import { slugify } from "../src/lib/utils";
 const u = (id: string, w = 1200) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 async function main() {
-  console.log("Seeding Ankoo…");
+  console.log("Seeding Ankooaitelier…");
 
   await db.insert(settings).values({ id: 1, data: DEFAULT_SETTINGS }).onConflictDoNothing();
 

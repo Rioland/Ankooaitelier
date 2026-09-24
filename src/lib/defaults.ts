@@ -1,7 +1,7 @@
 import type { StoreSettings } from "@/db/schema";
 
 export const DEFAULT_SETTINGS: StoreSettings = {
-  storeName: "Ankoo",
+  storeName: "Ankooaitelier",
   tagline: "Modern fashion, delivered across Nigeria.",
   whatsappNumber: "2348000000000",
   phone: "+234 800 000 0000",
