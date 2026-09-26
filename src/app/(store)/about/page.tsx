@@ -31,6 +31,23 @@ export default async function About() {
           <SafeImage src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80" alt="Inside the store" fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
         </Reveal>
       </section>
+
+      {(s.ceoName || s.ceoAbout) && (
+        <section className="container-x grid items-center gap-12 py-16 lg:grid-cols-2 lg:py-24">
+          <Reveal className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-brand-100 lg:order-last">
+            <SafeImage src={s.ceoImage || "/ceo.jpeg"} alt={s.ceoName || "Founder"} fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">Meet the founder</p>
+            <h2 className="mt-4 font-display text-4xl font-medium tracking-tight sm:text-5xl">{s.ceoName}</h2>
+            {s.ceoName && <p className="mt-1 text-sm font-medium text-neutral-500">Founder, {s.storeName}</p>}
+            <div className="mt-6 space-y-4 text-lg leading-relaxed text-neutral-600">
+              {s.ceoAbout.split(/\n\n+/).filter(Boolean).map((p, i) => <p key={i}>{p}</p>)}
+            </div>
+          </Reveal>
+        </section>
+      )}
+
       <section className="bg-brand-50 py-20">
         <div className="container-x">
           <Reveal><h2 className="font-display text-4xl font-medium sm:text-5xl">What we stand for</h2></Reveal>
