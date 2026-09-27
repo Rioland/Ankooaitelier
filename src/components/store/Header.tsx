@@ -74,9 +74,12 @@ export default function Header({ storeName, announcement, categories }: Props) {
           <Link href="/" className="group flex items-center gap-2">
             <motion.span
               whileHover={{ rotate: -12, scale: 1.08 }}
-              className="grid h-9 w-9 place-items-center rounded-xl bg-brand-600 font-display text-lg font-bold text-white shadow-lg shadow-brand-600/30"
+              className="grid h-9 w-9 place-items-center rounded-xl bg-brand-600 font-display text-xl font-semibold lowercase text-white shadow-lg shadow-brand-600/30"
             >
-              {storeName.charAt(0)}
+              <span className="relative leading-none">
+                a
+                <span className="absolute left-1/2 -top-1 h-[3.5px] w-[3.5px] -translate-x-1/2 rounded-full bg-white" />
+              </span>
             </motion.span>
             <span className="font-display text-2xl font-semibold tracking-tight text-brand-900">{storeName}</span>
           </Link>

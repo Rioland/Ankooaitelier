@@ -19,8 +19,26 @@ export default function OpengraphImage() {
           color: "white",
         }}
       >
-        <div style={{ fontSize: 30, letterSpacing: 10, textTransform: "uppercase", opacity: 0.8 }}>
-          Ankooaitelier
+        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              width: 76,
+              height: 76,
+              borderRadius: 18,
+              background: "rgba(255,255,255,0.14)",
+              color: "white",
+            }}
+          >
+            <div style={{ width: 8, height: 8, borderRadius: 9999, background: "white" }} />
+            <div style={{ fontSize: 44, fontWeight: 600, lineHeight: 1, marginTop: 2 }}>a</div>
+          </div>
+          <div style={{ fontSize: 30, letterSpacing: 10, textTransform: "uppercase", opacity: 0.8 }}>
+            Ankooaitelier
+          </div>
         </div>
         <div style={{ fontSize: 74, fontWeight: 700, marginTop: 28, lineHeight: 1.1, maxWidth: 900 }}>
           Modern fashion, delivered across Nigeria
