@@ -6,7 +6,35 @@ import { Stagger, StaggerItem } from "@/components/Reveal";
 import { getCategories, getProducts, type ShopFilters as F } from "@/lib/queries";
 import { SearchX } from "lucide-react";
 
-export const metadata: Metadata = { title: "Shop" };
+export async function generateMetadata({ searchParams }: { searchParams: Promise<F> }): Promise<Metadata> {
+  const f = await searchParams;
+  if (f.category) {
+    const cat = (await getCategories()).find((c) => c.slug === f.category);
+    if (cat)
+      return {
+        title: cat.name,
+        description: cat.description || `Shop ${cat.name} at Ankooaitelier — modern pieces with fast delivery across Nigeria.`,
+        alternates: { canonical: `/shop?category=${cat.slug}` },
+      };
+  }
+  if (f.gender === "men" || f.gender === "women") {
+    const label = f.gender === "men" ? "Men's fashion" : "Women's fashion";
+    return {
+      title: label,
+      description: `Shop ${label.toLowerCase()} at Ankooaitelier — clothing, native wear, sneakers and accessories with nationwide delivery.`,
+      alternates: { canonical: `/shop?gender=${f.gender}` },
+    };
+  }
+  // Search results and other filter combos are consolidated to /shop and kept out of the index.
+  const noisy = f.q || f.sale || f.size || f.min || f.max || f.sort;
+  return {
+    title: "Shop all",
+    description:
+      "Browse the full Ankooaitelier collection — dresses, shirts, native wear, sneakers and accessories with fast, nationwide delivery.",
+    alternates: { canonical: "/shop" },
+    ...(noisy ? { robots: { index: false, follow: true } } : {}),
+  };
+}
 
 export default async function ShopPage({ searchParams }: { searchParams: Promise<F> }) {
   const f = await searchParams;

@@ -5,7 +5,12 @@ import SafeImage from "@/components/SafeImage";
 import { getSettings } from "@/lib/queries";
 import { Leaf, HeartHandshake, Truck, Sparkles } from "lucide-react";
 
-export const metadata: Metadata = { title: "About" };
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "The story behind Ankooaitelier — a Nigerian fashion label creating modern, refined pieces for men and women, founded by Bolu Felix.",
+  alternates: { canonical: "/about" },
+};
 
 export default async function About() {
   const s = await getSettings();

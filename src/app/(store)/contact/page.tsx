@@ -4,7 +4,12 @@ import ContactForm from "@/components/store/ContactForm";
 import Reveal from "@/components/Reveal";
 import { getSettings } from "@/lib/queries";
 
-export const metadata: Metadata = { title: "Contact" };
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Get in touch with Ankooaitelier on WhatsApp or phone for orders, sizing help, delivery and returns anywhere in Nigeria.",
+  alternates: { canonical: "/contact" },
+};
 
 export default async function Contact() {
   const s = await getSettings();

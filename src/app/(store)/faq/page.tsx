@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import Faq from "@/components/store/Faq";
 import Reveal from "@/components/Reveal";
+import JsonLd from "@/components/JsonLd";
 import { getSettings } from "@/lib/queries";
 import { naira } from "@/lib/utils";
 
-export const metadata: Metadata = { title: "FAQs" };
+export const metadata: Metadata = {
+  title: "FAQs",
+  description:
+    "Answers to common questions about ordering on WhatsApp, payment, delivery times across Nigeria, returns and exchanges, and sizing at Ankooaitelier.",
+  alternates: { canonical: "/faq" },
+};
 
 export default async function FaqPage() {
   const s = await getSettings();
@@ -16,8 +22,19 @@ export default async function FaqPage() {
     { id: "sizes", q: "How do I find my size?", a: "Clothing: XS (6), S (8), M (10–12), L (14), XL (16), XXL (18).\nShoes use EU sizing (38–45). If you're between sizes, we recommend sizing up — or ask us on WhatsApp and we'll help." },
     { q: "Do you restock sold-out items?", a: "Popular pieces are often restocked. Join our newsletter or message us on WhatsApp to be notified." },
   ];
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((it) => ({
+      "@type": "Question",
+      name: it.q,
+      acceptedAnswer: { "@type": "Answer", text: it.a },
+    })),
+  };
+
   return (
     <div className="container-x max-w-4xl py-16 lg:py-24">
+      <JsonLd data={faqLd} />
       <Reveal className="mb-12 text-center">
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand-600">Help centre</p>
         <h1 className="mt-4 font-display text-5xl font-medium tracking-tight sm:text-6xl">Frequently asked questions</h1>
