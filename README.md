@@ -4,6 +4,8 @@ Next.js 15 (App Router) · Tailwind CSS v4 · Framer Motion · Drizzle ORM · Ne
 
 Animated hero slider, shop by category / size, product filters and search, product gallery with size and colour selection, cart drawer, checkout that saves the order and opens WhatsApp with the full order summary, plus About / Contact / FAQ pages and a newsletter signup.
 
+**Live site:** https://ankooaiteliers.com (hosted on Netlify) · **Admin:** https://admin.ankooaiteliers.com
+
 The admin panel is a separate project (`ankoo-admin`) that is deployed on its own and uses the same database. This project owns the database schema and sample data.
 
 ---
@@ -14,7 +16,7 @@ The admin panel is a separate project (`ankoo-admin`) that is deployed on its ow
 2. **Connect Neon:** go to Project → **Storage** → **Create Database** → **Neon** → connect it to the project. This adds `DATABASE_URL` for you.
 3. **Create a Blob store** (Storage → Create → Blob). The storefront doesn't use it directly; connect it to the **admin** project so product images uploaded there get public URLs.
 4. **Add environment variables** (Settings → Environment Variables):
-   - `NEXT_PUBLIC_SITE_URL`: e.g. `https://ankoo.vercel.app`
+   - `NEXT_PUBLIC_SITE_URL`: `https://ankooaiteliers.com` (this is also the built-in production default)
 5. **Create the tables and sample data** (run once from your computer):
    ```bash
    npm install
